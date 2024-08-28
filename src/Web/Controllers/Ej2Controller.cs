@@ -29,14 +29,20 @@ public class Ej2Controller : ControllerBase
     [HttpGet("[action]")]
     public ActionResult GetCertainBook(int id)
     {
-        foreach (PhotoBook album in listBooks)
+        // foreach (PhotoBook album in listBooks)
+        // {
+        //     if (album.id == id)
+        //     {
+        //         return Ok(album.GetNumberPages());
+        //     }
+        // }
+        // return StatusCode(404, "Id no existente");
+        var albumFounded = listBooks.FirstOrDefault(album => album.id == id);
+        if (albumFounded != null)
         {
-            if (album.id == id)
-            {
-                return Ok(album.GetNumberPages());
-            }
+            return Ok(albumFounded.GetNumberPages());
         }
-        return StatusCode(400, "Id no existente");
+        return StatusCode(404, "Id not found");
     }
 
     [HttpGet("[action]")]
