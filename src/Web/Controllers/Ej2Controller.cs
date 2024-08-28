@@ -37,12 +37,22 @@ public class Ej2Controller : ControllerBase
         //     }
         // }
         // return StatusCode(404, "Id no existente");
+
+        //Solucion con LINQ
         var albumFounded = listBooks.FirstOrDefault(album => album.id == id);
         if (albumFounded != null)
         {
             return Ok(albumFounded.GetNumberPages());
         }
         return StatusCode(404, "Id not found");
+
+        //Sin LINQ
+        // var albumFounded = listBooks.Find(album => album.id == id);
+        // if (albumFounded != null)
+        // {
+        //     return Ok(albumFounded.GetNumberPages());
+        // }
+        // return StatusCode(404, "Id not found");
     }
 
     [HttpGet("[action]")]
