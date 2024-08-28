@@ -13,6 +13,12 @@ namespace Web.ej2
             id = idGenerated++;
         }
 
+        //Otra forma de hacer el 
+        // public PhotoBook() : this(16)
+        // {
+
+        // }
+
         public PhotoBook(int p)
         {
             pages = p;
